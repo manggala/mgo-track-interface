@@ -18,8 +18,13 @@ Route::get('/', function () {
 Route::group(['prefix' =>'/products'], function(){
 	Route::get('/', "ProductController@index");
 });
+Route::get('product/{id}', function(){
+	return redirect("track");
+});
 Route::group(['prefix' => '/tracking'], function(){
 	Route::post('store', function(){
 		return response('', 200);
 	});
 });
+
+Route::get('track', 'ProductController@trackingResult');

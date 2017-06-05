@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\ProductList as Product;
 use Illuminate\Http\Request;
-
+use DB;
 class ProductController extends Controller
 {
     /**
@@ -82,5 +82,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function trackingResult(){
+        $data = DB::table('trackers')->orderBy('id', 'desc')->get();
+        return view('track', compact('data'));
     }
 }
